@@ -26,8 +26,14 @@ arg.append(0)
 print(arg)
 res = cnx._send_cmd(cmd, arg)
 
-print("Response is: \n")
+print("First packet: \n")
 hexdump.hexdump(res)
+
+for i in range(10):
+    print("\n")
+    res2 = cnx._socket.recv()
+    print("Next packet:\n")
+    hexdump.hexdump(res2)
 
 # Close connection
 cnx.close()
